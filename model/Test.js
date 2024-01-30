@@ -1,24 +1,31 @@
-import mongoose from "mongoose";
+import mongoose from 'mongoose'
 
-const tagsSchema = new mongoose.Schema({
-	question: {
-		type: String,
-		required: true,
-	},
-    option1:{
-        type : String,
-    },
-    option2:{
-        type : String,
-    },
-    option3:{
-        type : String,
-    },
-    option4:{
-        type : String,
-    },
+const questionsSchema = new mongoose.Schema({
+  question: {
+    type: String,
+    required: true,
+  },
+  option1: {
+    type: String,
+  },
+  option2: {
+    type: String,
+  },
+  option3: {
+    type: String,
+  },
+  option4: {
+    type: String,
+  },
+  correctAnswer: {
+    type: String,
+  },
+  tag: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Tags',
+    required: true,
+  },
+})
 
-});
-
-
-export const Tags = mongoose.models.Tags  || mongoose.model("OTP",tagsSchema );
+export const Question =
+  mongoose.models.Question || mongoose.model('Question', questionsSchema)
